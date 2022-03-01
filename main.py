@@ -95,8 +95,15 @@ def find_password():
         else:
             if email in data:
                 if website in data[email]:
-                    messagebox.showinfo(title=f"{website}",
-                                        message=f"Email: {email}\nPassword: {data[email][website]}")
+                    # messagebox.showinfo(title=f"{website}",
+                    #                     message=f"Email: {email}\nPassword: {data[email][website]}")
+                    email_entry.delete(0, END)
+                    website_entry.delete(0, END)
+                    password_entry.delete(0, END)
+
+                    website_entry.insert(END, website)
+                    email_entry.insert(END, email)
+                    password_entry.insert(END, data[email][website])
                 else:
                     messagebox.showinfo(title="Oops", message=f"There is no data for website or app {website} with email: {email}.")
 
@@ -131,7 +138,7 @@ website_entry.focus()
 
 email_entry = Entry(width=24, font=("Arial", 11))
 email_entry.grid(column=1, row=2, columnspan=2, sticky="W")
-email_entry.insert(END, "example@gmail.com")
+email_entry.insert(END, "alifdeadpool333@gmail.com")
 
 password_entry = Entry(font=("Arial", 11), width=35)
 password_entry.grid(column=1, row=3, columnspan=2, sticky="EW")
